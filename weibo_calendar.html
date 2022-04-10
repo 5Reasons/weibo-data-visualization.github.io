@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-    <div id="main" style="width: 600px;height:800px;"></div>
+    <div id="main" style="width: 100%;height: 1000px;"></div>
     <script type="text/javascript">
       // 基于准备好的dom，初始化echarts实例
       var chartDom = document.getElementById('main');
@@ -55,7 +55,7 @@ option = {
   },
   legend: {
     top: '50',
-    left: '100',
+    left: 'center',
     data: ['Posts', 'Top 12'],
     textStyle: {
       color: '#fff'
