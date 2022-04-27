@@ -12,178 +12,180 @@
     <script type="text/javascript">
       // 基于准备好的dom，初始化echarts实例
       var chartDom = document.getElementById('main');
-var myChart = echarts.init(chartDom);
-var option;
+      var myChart = echarts.init(chartDom);
+      var option;
 
-function getVirtulData(year) {
-  year = year || '2017';
-  let date = +echarts.number.parseDate(year + '-01-01');
-  let end = +echarts.number.parseDate(+year + 1 + '-01-01');
-  let dayTime = 3600 * 24 * 1000;
-  let data = [];
-  for (let time = date; time < end; time += dayTime) {
-    data.push([
-      echarts.format.formatTime('yyyy-MM-dd', time),
-      Math.floor(Math.random() * 10000),
-    ]);
-  }
-  return data;
-}
-const data = getVirtulData('2016');
-option = {
-  backgroundColor: '#404a59',
-  title: {
-    top: 'top',
-    text: 'Calendar for Weibo Posts about #Metoo',
-    subtext: 'Data from: xx.xx.xx ~ yy.yy.yy',
-    left: 'center',
-    textStyle: {
-      color: '#fff'
-    }
-  },
-  tooltip: {
-    trigger: 'item',
-    formatter: function(params){
-        console.log(params)
-        let str = 'Date: '+ params.data[0] + '<br>'+'Num of Posts: '+params.data[1]
-        return str
-    },
-    textStyle: {
-        fontSize: 10,
-        fontWeight: 'bold'
-    }
-  },
-  legend: {
-    top: '50',
-    left: 'center',
-    data: ['Posts', 'Top 12'],
-    textStyle: {
-      color: '#fff'
-    }
-  },
-  calendar: [
-    {
-      top: 120,
-      left: 'center',
-      range: ['2016-01-01', '2016-06-30'],
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#000',
-          width: 4,
-          type: 'solid'
+      function getVirtulData(year) {
+        year = year || '2017';
+        let date = +echarts.number.parseDate(year + '-01-01');
+        console.log('1',date)
+        let end = +echarts.number.parseDate(+year + 1 + '-01-01');
+        console.log('2',end)
+        let dayTime = 3600 * 24 * 1000;
+        let data = [];
+        for (let time = date; time < end; time += dayTime) {
+          data.push([
+            echarts.format.formatTime('yyyy-MM-dd', time),
+            Math.floor(Math.random() * 10000),
+          ]);
         }
-      },
-      yearLabel: {
-        formatter: '{start}  1st',
-        color: '#fff'
-      },
-      itemStyle: {
-        color: '#323c48',
-        borderWidth: 1,
-        borderColor: '#111'
+        return data;
       }
-    },
-    {
-      top: 340,
-      left: 'center',
-      range: ['2016-07-01', '2016-12-31'],
-      splitLine: {
-        show: true,
-        lineStyle: {
-          color: '#000',
-          width: 4,
-          type: 'solid'
-        }
-      },
-      yearLabel: {
-        formatter: '{start}  2nd',
-        color: '#fff'
-      },
-      itemStyle: {
-        color: '#323c48',
-        borderWidth: 1,
-        borderColor: '#111'
-      }
-    }
-  ],
-  series: [
-    {
-      name: 'Posts',
-      type: 'scatter',
-      coordinateSystem: 'calendar',
-      data: data,
-      symbolSize: function (val) {
-        return val[1] / 500;
-      },
-      itemStyle: {
-        color: '#ddb926'
-      }
-    },
-    {
-      name: 'Posts',
-      type: 'scatter',
-      coordinateSystem: 'calendar',
-      calendarIndex: 1,
-      data: data,
-      symbolSize: function (val) {
-        return val[1] / 500;
-      },
-      itemStyle: {
-        color: '#ddb926'
-      }
-    },
-    {
-      name: 'Top 12',
-      type: 'effectScatter',
-      coordinateSystem: 'calendar',
-      calendarIndex: 1,
-      data: data
-        .sort(function (a, b) {
-          return b[1] - a[1];
-        })
-        .slice(0, 12),
-      symbolSize: function (val) {
-        return val[1] / 500;
-      },
-      showEffectOn: 'render',
-      rippleEffect: {
-        brushType: 'stroke'
-      },
-      itemStyle: {
-        color: '#f4e925',
-        shadowBlur: 10,
-        shadowColor: '#333'
-      },
-      zlevel: 1
-    },
-    {
-      name: 'Top 12',
-      type: 'effectScatter',
-      coordinateSystem: 'calendar',
-      data: data
-        .sort(function (a, b) {
-          return b[1] - a[1];
-        })
-        .slice(0, 12),
-      symbolSize: function (val) {
-        return val[1] / 500;
-      },
-      showEffectOn: 'render',
-      rippleEffect: {
-        brushType: 'stroke'
-      },
-      itemStyle: {
-        color: '#f4e925',
-        shadowBlur: 10,
-        shadowColor: '#333'
-      },
-      zlevel: 1
-    }
-  ]
-};
+      const data = getVirtulData('2016');
+      option = {
+        backgroundColor: '#404a59',
+        title: {
+          top: 'top',
+          text: 'Calendar for Weibo Posts about #Metoo',
+          subtext: 'Data from: xx.xx.xx ~ yy.yy.yy',
+          left: 'center',
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: function(params){
+              console.log(params)
+              let str = 'Date: '+ params.data[0] + '<br>'+'Num of Posts: '+params.data[1]
+              return str
+          },
+          textStyle: {
+              fontSize: 10,
+              fontWeight: 'bold'
+          }
+        },
+        legend: {
+          top: '50',
+          left: 'center',
+          data: ['Posts', 'Top 12'],
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        calendar: [
+          {
+            top: 120,
+            left: 'center',
+            range: ['2016-01-01', '2016-06-30'],
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: '#000',
+                width: 4,
+                type: 'solid'
+              }
+            },
+            yearLabel: {
+              formatter: '{start}  1st',
+              color: '#fff'
+            },
+            itemStyle: {
+              color: '#323c48',
+              borderWidth: 1,
+              borderColor: '#111'
+            }
+          },
+          {
+            top: 340,
+            left: 'center',
+            range: ['2016-07-01', '2016-12-31'],
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: '#000',
+                width: 4,
+                type: 'solid'
+              }
+            },
+            yearLabel: {
+              formatter: '{start}  2nd',
+              color: '#fff'
+            },
+            itemStyle: {
+              color: '#323c48',
+              borderWidth: 1,
+              borderColor: '#111'
+            }
+          }
+        ],
+        series: [
+          {
+            name: 'Posts',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            data: data,
+            symbolSize: function (val) {
+              return val[1] / 500;
+            },
+            itemStyle: {
+              color: '#ddb926'
+            }
+          },
+          {
+            name: 'Posts',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 1,
+            data: data,
+            symbolSize: function (val) {
+              return val[1] / 500;
+            },
+            itemStyle: {
+              color: '#ddb926'
+            }
+          },
+          {
+            name: 'Top 12',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 1,
+            data: data
+              .sort(function (a, b) {
+                return b[1] - a[1];
+              })
+              .slice(0, 12),
+            symbolSize: function (val) {
+              return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+              brushType: 'stroke'
+            },
+            itemStyle: {
+              color: '#f4e925',
+              shadowBlur: 10,
+              shadowColor: '#333'
+            },
+            zlevel: 1
+          },
+          {
+            name: 'Top 12',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            data: data
+              .sort(function (a, b) {
+                return b[1] - a[1];
+              })
+              .slice(0, 12),
+            symbolSize: function (val) {
+              return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+              brushType: 'stroke'
+            },
+            itemStyle: {
+              color: '#f4e925',
+              shadowBlur: 10,
+              shadowColor: '#333'
+            },
+            zlevel: 1
+          }
+        ]
+      };
 
-option && myChart.setOption(option);
+      option && myChart.setOption(option);
 
     </script>
   </body>
