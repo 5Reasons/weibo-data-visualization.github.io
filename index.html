@@ -8,92 +8,12 @@
   </head>
   <body>
     <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-    <div id="main" style="width: 600px;height:800px;"></div>
-    <script type="text/javascript">
-      // 基于准备好的dom，初始化echarts实例
-      var chartDom = document.getElementById('main');
-        var myChart = echarts.init(chartDom);
-        var option;
-
-        function getVirtulData(year) {
-        year = year || '2017';
-        let date = +echarts.number.parseDate(year + '-01-01');
-        let end = +echarts.number.parseDate(+year + 1 + '-01-01');
-        let dayTime = 3600 * 24 * 1000;
-        let data = [];
-        for (let time = date; time < end; time += dayTime) {
-            data.push([
-            echarts.format.formatTime('yyyy-MM-dd', time),
-            Math.floor(Math.random() * 100)
-            ]);
-        }
-        return data;
-        }
-        option = {
-            title:{
-                text: ' Calendar for Weibo Posts about #Metoo'
-            },
-            tooltip: {
-                position: 'top'
-            },
-        visualMap: {
-            min: 0,
-            max: 100,
-            calculable: true,
-            orient: 'horizontal',
-            left: 'center',
-            top: 100
-        },
-        calendar: [
-            {
-                top: 200,
-                range: '2017',
-                cellSize: ['auto', 12],
-                itemStyle: {
-                    borderWidth: 0.5
-                }
-            },
-            {
-                top: 350,
-                range: '2016',
-                cellSize: ['auto', 12],
-                itemStyle: {
-                    borderWidth: 0.5
-                }
-            },
-            {
-                top: 500,
-                range: '2015',
-                cellSize: ['auto', 12],
-                itemStyle: {
-                    borderWidth: 0.5
-                }
-            }
-        ],
-        series: [
-            {
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 0,
-            data: getVirtulData('2017')
-            },
-            {
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 1,
-            data: getVirtulData('2016')
-            },
-            {
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 2,
-            data: getVirtulData('2015')
-            }
-        ]
-        };
-
-        option && myChart.setOption(option);
-
-    </script>
+    <div id="main" style="width: 600px;height:800px;">
+        <p>The Data Visualization Part of my Final Project</p>
+        <p>Author: Ruizheng Wu</p>
+        <a href="https://5reasons.github.io/weibo-data-visualization.github.io/weibo_calendar.html">Weibo Calendar</a>
+        <br><br>
+        <a href="https://5reasons.github.io/weibo-data-visualization.github.io/weibo_map.html">Weibo Map</a>
+    </div>    
   </body>
 </html>
