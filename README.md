@@ -8,6 +8,6 @@
 - 地图组件(美国地图)：https://echarts.apache.org/examples/zh/editor.html?c=calendar-effectscatter
 
 ## 项目demo：
-- 微博+日历组件可视化：https://5reasons.github.io/weibo-data-visualization.github.io/weibo_ calendar.html
+- 微博+日历组件可视化：https://5reasons.github.io/weibo-data-visualization.github.io/weibo_calendar.html
 - 微博+中国地图可视化：https://5reasons.github.io/weibo-data-visualization.github.io/weibo_map.html
 - 中国地图数据见 china.js，依照示例略作替换地图文件、加入数据即可。
